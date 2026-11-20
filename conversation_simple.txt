@@ -1,0 +1,24 @@
+#============================================================================
+# Basic Example
+#============================================================================
+script:megan
+title:start
+  megan say: Well, hello traveler. 
+  player say: Greetings, good lady.
+  megan say: So, I hear you killed the ogre.
+  player exclaim: Yes, I did indeed! It appears my deeds proceed me!
+  megan say: You are pretty proud of yourself, aren't ya?
+  player exclaim: You know it, lady!  That ogre was huge and powerful!
+  megan say: Say, did he try to talk to you when you attacked him?
+  player say: Well, not that you mention it, yes, he did...
+  megan whisper: Tell me, traveler, what did the ogre say.
+  player say: I wasn't really listening.  Something about him not being dangerous or something.
+  megan whisper: You know why he might have said that?
+  player say: He was just trying to trick me, probably.
+  megan yell: OR IT MIGHT BE BECAUSE HE WAS OUR FRIEND, YOU IDIOT!!!
+  player say: Oh. Haha. Heh. Really?
+  megan exclaim: Yes, really! His name was Ed. He kept our village safe.
+  megan exclaim: I don't know what we will do!
+  player whisper: Gosh. Well, I should be going. Good luck and all that.
+  megan emote: * Sobbing *
+  player thinks: I better get out of here...

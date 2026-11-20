@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>RogueSignal.io</title>
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/RogueSignalio/overBase/assets/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/RogueSignalio/overBase@v0.1/css/over_demo.min.css" id="page_style">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.85.0/phaser.min.js" crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/gh/RogueSignalio/overGrowl@v1.1/over_growl.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/gh/RogueSignalio/overBase/scripts/over_demo.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/RogueSignalio/overBase/scripts/over_base.min.js"></script>
+    <!-- For local development only -->
+    <!-- <link rel="stylesheet" href="css/over_demo.css" id="page_style"> -->
+    <script src="over_chat.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="demo"></div>
+<script>
+  window.onload = function() {
+    window.oc = new OverChat({
+        width: 300 ,
+        height: 100,
+        background: '0x000000',
+        transparent: true,      
+    })
+
+    over_demo_panel('overChat',0.01,'overChat',
+      [
+        'overChat allows one to quickly add a back and forth conversation using overBubble.',
+        'overChat is good for story telling between two or more people!',
+        'overChat can be used for serving as a display base for a chat app.',
+        'Chat bubbles are generated using overBubbles (TODO LINK).',
+        'Bubbles are styled by "mood" type, such as "whisper","say", "yell" etc...',
+        'New bubble types can be created as needed.',
+        'Of course, all bubbles can be re-styled for your application needs.',
+        'Provides a script and plugin loading framework via overBase.',
+        'This demo also uses:',
+        '<a href="https://github.com/RogueSignalio/overBubble">overBubble</a>.',
+        '<a href="https://github.com/RogueSignalio/overGrowl">overGrowl</a>.',
+        '<a href="https://github.com/RogueSignalio/overBase">overBase</a>.',
+      ],
+      { 
+        'Test Growl-1': 'window.odemo_growler.success("I am the first growl.")', 
+        'Test Growl-2': 'window.odemo_growler.info("I am the second growl.")',
+        'Test Growl-3': 'window.odemo_growler.thinking("I am a different kind of growl.")',
+        'Test Growl-3': 'window.odemo_growler.thinking("I am a different kind of growl.")',
+      } 
+    )
+  }
+</script>
+</body>
+</html>

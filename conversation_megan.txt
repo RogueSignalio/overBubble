@@ -1,0 +1,82 @@
+#============================================================================
+# You can put comments anywhere in script.
+#  This example demonstrates some more complex capabilities of overStory.
+#  * Script starting branch.  Restores previous conversation, otherwise
+#    starts a new one.
+#  * Adds prompt choices and branching behavior.
+#  * Code evals (if code_eval==true), otherwise returns evals entries to 
+#    caller to handle from calling code.
+#  * Introduces postures. (TODO)
+#  * 
+#============================================================================
+script:megan
+start:restore
+start:start_here
+#start:
+#  -->:require:player:inventory_has('Bundersnookle Head')
+#    -->:goto:good_win
+#  -->:restore:player
+#  -->:default:start
+#============================================================================
+title:start_here
+  megan say:Well, hello traveler. I hear you killed the ogre.
+  megan say:You don't even know what you have done.
+  player think:* Megan seems to be getting angry... *
+  megan posture:angry
+  -->:eval:megan:set_expression('angry')
+  megan say:The "scary" ogre you killed was named Ed.
+  megan yell:Ed protected us, you dork!!!
+  player prompt:good_path:Oh. I didn't know. Sorry... I will protect your people!
+  -->:eval:player:inc_good(1)
+  -->:eval:player:inc_law(1)
+  -->:eval:player:inc_faction('Bunderville',1)
+  player prompt:evil_path:Whatever.  I got a new sword from his cold, dead body.
+  -->:eval:player:dcr_good(1)
+  -->:eval:player:dcr_law(1)
+  -->:eval:player:dcr_faction('Bunderville',1)
+#============================================================================
+# Good branch
+#============================================================================
+title:good_path
+  megan say:Huh. I guess that will do. Ed was getting pretty slow in his old age.
+  megan say:So, if you are our protector now, then you are ready to handle our new problem!
+  megan exclaim:We need you to kill the Bundersnookle!
+  player prompt:good_end:Of course!  Consider the Bundersnookle good as dead!
+  -->:eval:player:inc_good(1)
+  -->:eval:player:inc_law(1)
+  -->:eval:player:inc_faction('Bunderville',1)
+  player prompt:neutral_end:Uh, you know, I have some other things to do right now. Umm. Ok, see ya!
+  -->:eval:player:dcr_good(1)
+  -->:eval:player:dcr_law(1)
+  -->:eval:player:dcr_faction('Bunderville',1)
+#============================================================================
+# Good End
+#============================================================================
+title:good_end
+  megan praise:Succeed and you will be celebrated as a hero!
+#============================================================================
+# Evil branch
+#============================================================================
+title:evil_path
+  megan say:Wow... A murderer and a coward. Don't strain yourself with achievement unlocks.
+  megan whisper:Pathetic.
+  player prompt:good_path:Ok, fine. I will make up for it.  What do you need done?
+  -->:eval:player:inc_law(1)
+  -->:eval:player:inc_faction('Bunderville',1)
+  player prompt:neutral_end:Look, I am sorry.  I didn't know.  I will donate 5gp to the town.
+  -->:require:player:inventory_has('gold',5)
+  -->:eval:player:inc_faction('Bunderville',1)
+  player prompt:evil_end:Your problems are not my concern. Out of the way peck!!!
+  -->:eval:player:dcr_good(1)
+  -->:eval:player:dcr_law(1)
+  -->:eval:player:dcr_faction('Bunderville',1)
+#============================================================================
+# Evil End
+#============================================================================
+title:good_end
+  megan scold:You are an awful vagrant.  Get out of my face.
+#============================================================================
+# Neutral End
+#============================================================================
+title:neutral_end
+  megan say:I don't really have more to say to you.  Be on your way.
